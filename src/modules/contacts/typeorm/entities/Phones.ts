@@ -2,6 +2,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -17,11 +18,17 @@ export class Phone {
   number: string;
 
   @CreateDateColumn()
-  creted_at: Date;
+  created_at: Date;
 
   @UpdateDateColumn()
   updated_at: Date;
 
-  @ManyToOne(() => Contact, contact => contact.phones)
+  // estabelce o relacionamento entre
+  // o contato e o telefone
+  @ManyToOne(() => Contact)
+  @JoinColumn({ name: 'contact_id' })
   contact: Contact;
+
+  @Column()
+  contact_id: string;
 }
