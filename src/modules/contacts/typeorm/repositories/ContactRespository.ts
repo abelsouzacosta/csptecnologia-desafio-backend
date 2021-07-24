@@ -39,4 +39,15 @@ export class ContactsRepository extends Repository<Contact> {
 
     return contact;
   }
+
+  // encontra um contato pelo id passado
+  public async findById(id: string): Promise<Contact | undefined> {
+    const contact = await this.findOne({
+      where: {
+        id,
+      },
+    });
+
+    return contact;
+  }
 }
