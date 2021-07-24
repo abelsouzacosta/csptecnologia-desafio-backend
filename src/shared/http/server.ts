@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import express, { NextFunction, Request, Response } from 'express';
+import 'express-async-errors';
 import cors from 'cors';
 import 'dotenv/config';
 import '@shared/typeorm';
@@ -13,10 +14,9 @@ app.use(cors());
 
 app.use(router);
 
-// tratamento de erros da aplicação
+// middleware de erros da aplicação
 app.use(
   (error: Error, request: Request, response: Response, next: NextFunction) => {
-    // verifica se error é ums instância de ApplicationError
     if (error instanceof ApplicationError) {
       return response.status(error.statusCode).json({
         status: 'error',
