@@ -8,4 +8,6 @@ contactRouter.get('/', controller.index);
 
 contactRouter.post('/create', controller.create);
 
+contactRouter.put('/:id', controller.update);
+
 export { contactRouter };

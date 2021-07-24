@@ -12,6 +12,15 @@ export default class ListContactsService {
       relations: ['phones'],
     });
 
+    // const test = await repository
+    //   .createQueryBuilder('c')
+    //   .select(['firstName', 'lastName'])
+    //   .addSelect('p.number')
+    //   .innerJoin('phones', 'p', 'c.id = p.contact_id')
+    //   .getRawMany();
+
+    // console.log(test);
+
     if (!contacts) throw new ApplicationError('No contact were found');
 
     return contacts;
