@@ -25,6 +25,7 @@ export class AddContactIdToPhoneTable1627089727676
         columnNames: ['contact_id'],
         referencedColumnNames: ['id'],
         referencedTableName: 'contacts',
+        onDelete: 'CASCADE',
       }),
     );
   }

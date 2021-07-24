@@ -25,7 +25,9 @@ export class Phone {
 
   // estabelce o relacionamento entre
   // o contato e o telefone
-  @ManyToOne(() => Contact)
+  @ManyToOne(() => Contact, {
+    onDelete: 'CASCADE',
+  })
   @JoinColumn({ name: 'contact_id' })
   contact: Contact;
 

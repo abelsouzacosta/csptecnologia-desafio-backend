@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import AddANewNumberToContactService from '../services/AddANewNumberToContactService';
 import CreateContactService from '../services/CreateContactService';
+import DeleteContactService from '../services/DeleteContactService';
 import ListContactsService from '../services/ListContactsService';
 import UpdateContactService from '../services/UpdateContactService';
 
@@ -51,5 +52,15 @@ export default class ContactController {
     const contact = await add.execute({ contact_id, number });
 
     return response.status(200).json(contact);
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const remove = new DeleteContactService();
+
+    const removed = await remove.execute({ id });
+
+    return response.status(200).json(removed);
   }
 }

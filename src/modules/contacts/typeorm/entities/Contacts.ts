@@ -28,6 +28,8 @@ export class Contact {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @OneToMany(() => Phone, phone => phone.contact)
+  @OneToMany(() => Phone, phone => phone.contact, {
+    onDelete: 'CASCADE',
+  })
   phones: Phone[];
 }
