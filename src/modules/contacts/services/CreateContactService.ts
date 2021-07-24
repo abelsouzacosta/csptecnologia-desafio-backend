@@ -10,7 +10,7 @@ export default class CreateContactService {
     firstName,
     lastName,
     email,
-    phone_number,
+    phone_numbers,
   }: ICreateContact): Promise<IContactResponse | undefined> {
     // inicializando o repositorio de contatos
     const contactRepository: ContactsRepository =
@@ -39,13 +39,21 @@ export default class CreateContactService {
     // isolando id do contato
     const { id: contact_id } = contact;
 
-    // cria instância de telefone
-    const phone = phoneRepository.create({
-      number: phone_number,
-      contact_id,
-    });
+    // verifica se phone_numbers tem algum conteúdo
+    if (!phone_numbers.length)
+      throw new ApplicationError('At least one phone number must be provided');
 
-    await phoneRepository.save(phone);
+    // mapeia o array recebido na requisição cadastrando
+    // cada um dos números como um número do respectivo contato
+    phone_numbers.map(async number => {
+      // cria instância de telefone
+      const phone = phoneRepository.create({
+        number,
+        contact_id,
+      });
+
+      await phoneRepository.save(phone);
+    });
 
     return contact;
   }

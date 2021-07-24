@@ -15,7 +15,7 @@ export default class ContactController {
   }
 
   public async create(request: Request, response: Response): Promise<Response> {
-    const { firstName, lastName, email, phone_number } = request.body;
+    const { firstName, lastName, email, phone_numbers } = request.body;
 
     const create = new CreateContactService();
 
@@ -23,7 +23,7 @@ export default class ContactController {
       firstName,
       lastName,
       email,
-      phone_number,
+      phone_numbers,
     });
 
     return response.status(200).json(contact);
