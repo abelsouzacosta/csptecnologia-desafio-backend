@@ -1,4 +1,4 @@
-## Desafio CSP Consultaria
+## Desafio CSP Consultoria
 
 ### API de contatos
 
@@ -65,8 +65,12 @@ cd csptecnologia-desafio-backend/
 	"email": "email@mail.com",
 	"phone_numbers": [
 		"77777777777",
-		"77777777777"
+		"77777777778"
 	]
 }
 
 ```
+
+<b>[PUT]</b>/contacts/:id: A atualiza as informações principais do contato: firstName, lastName e email. O `id` do contato deve ser passado por parametro da url, as demais informações devem ser passadas no corpo da requisição.
+
+<b>[DELETE]</b>/contacts/:id: Remove a instância de contato com o id passado
