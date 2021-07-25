@@ -49,3 +49,24 @@ cd csptecnologia-desafio-backend/
 7. Rode as migrations com o comando: `yarn migration:run`
 
 8. Inicialize a aplicação: `yarn dev`
+
+#### Rotas
+
+<b>[GET]</b>/contacts: Retorna todas as instâncias inseridas no banco de dados, se passada uma query parameter também é possível filtrar pelos nomes e pelo email, da seguinte forma:
+
+`contacts?firstName=value` ou `contacts?lastName=value` ou `contacts?email=value`
+
+<b>[POST]</b>/contacts: A rota deve receber no corpo da requisição o primeiro nome, último nome, email e um array contendo oos números de telefone do contato, como podemos ver abaixo:
+
+```
+{
+	"firstName": "Name",
+	"lastName": "Surname",
+	"email": "email@mail.com",
+	"phone_numbers": [
+		"77777777777",
+		"77777777777"
+	]
+}
+
+```
