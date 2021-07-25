@@ -6,7 +6,7 @@ const contactRouter = Router();
 
 contactRouter.get('/', controller.index);
 
-contactRouter.post('/create', controller.create);
+contactRouter.post('/', controller.create);
 
 contactRouter.put('/:id', controller.update);
 

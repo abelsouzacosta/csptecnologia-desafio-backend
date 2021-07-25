@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { ISearchContact } from '../interfaces/ISearchContact';
 import AddANewNumberToContactService from '../services/AddANewNumberToContactService';
 import CreateContactService from '../services/CreateContactService';
 import DeleteContactService from '../services/DeleteContactService';
@@ -7,9 +8,19 @@ import UpdateContactService from '../services/UpdateContactService';
 
 export default class ContactController {
   public async index(request: Request, response: Response): Promise<Response> {
+    const { firstName, lastName, email }: ISearchContact = request.query;
+
     const list = new ListContactsService();
 
-    const contacts = await list.execute();
+    const result = await list.execute();
+
+    const contacts = firstName
+      ? result.filter(contact => contact.firstName === firstName)
+      : lastName
+      ? result.filter(contact => contact.lastName === lastName)
+      : email
+      ? result.filter(contact => contact.email === email)
+      : result;
 
     return response.status(200).json(contacts);
   }

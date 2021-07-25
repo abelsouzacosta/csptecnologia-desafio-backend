@@ -11,8 +11,10 @@ export class ContactsRepository extends Repository<Contact> {
       where: {
         firstName,
       },
+      relations: ['phones'],
     });
 
+    console.log(firstName, contact);
     return contact;
   }
 
@@ -24,6 +26,7 @@ export class ContactsRepository extends Repository<Contact> {
       where: {
         lastName,
       },
+      relations: ['phones'],
     });
 
     return contact;
@@ -35,6 +38,7 @@ export class ContactsRepository extends Repository<Contact> {
       where: {
         email,
       },
+      relations: ['phones'],
     });
 
     return contact;
