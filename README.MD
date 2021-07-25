@@ -13,7 +13,7 @@ Permite cadastrar em um banco de dados contatos com as seguintes informações:
 Para isso o banco de dados foi estruturado da seguinte forma:
 
 <h3 align="left">
-  <img src=".github/diagram.png" alt="demonstration" width="700">
+  <img src=".github/db.png" alt="demonstration" width="700">
 <h3>
 
 ### Tecnologias Utilizadas:
