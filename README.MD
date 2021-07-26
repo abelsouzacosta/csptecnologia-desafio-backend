@@ -56,6 +56,8 @@ cd csptecnologia-desafio-backend/
 
 `contacts?firstName=value` ou `contacts?lastName=value` ou `contacts?email=value`
 
+<b>[GET]</b>/contacts/:id: Lista todos os detalhes de um único contato identificado pelo id passado no parametro da url
+
 <b>[POST]</b>/contacts: A rota deve receber no corpo da requisição o primeiro nome, último nome, email e um array contendo oos números de telefone do contato, como podemos ver abaixo:
 
 ```
@@ -74,3 +76,14 @@ cd csptecnologia-desafio-backend/
 <b>[PUT]</b>/contacts/:id: A atualiza as informações principais do contato: firstName, lastName e email. O `id` do contato deve ser passado por parametro da url, as demais informações devem ser passadas no corpo da requisição.
 
 <b>[DELETE]</b>/contacts/:id: Remove a instância de contato com o id passado
+
+<b>[POST]</b>/contacts/add_new_number_to_contact/:id: Permite adicionar um novo número de telefone ao contato identificado pelo `id` o corpo da requisição deve estar dessa forma:
+
+```
+{
+	"number": "75992866624"
+}
+
+```
+
+Abel Souza ©️
