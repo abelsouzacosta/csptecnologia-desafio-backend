@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { ISearchContact } from '../interfaces/ISearchContact';
 import AddANewNumberToContactService from '../services/AddANewNumberToContactService';
+import ContactDetailsService from '../services/ContactDetailsService';
 import CreateContactService from '../services/CreateContactService';
 import DeleteContactService from '../services/DeleteContactService';
 import ListContactsService from '../services/ListContactsService';
@@ -73,5 +74,18 @@ export default class ContactController {
     const removed = await remove.execute({ id });
 
     return response.status(200).json(removed);
+  }
+
+  public async details(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
+    const { id } = request.params;
+
+    const details = new ContactDetailsService();
+
+    const contact = await details.execute({ id });
+
+    return response.status(200).json(contact);
   }
 }

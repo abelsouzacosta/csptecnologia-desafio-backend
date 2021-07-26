@@ -12,6 +12,8 @@ contactRouter.put('/:id', controller.update);
 
 contactRouter.delete('/:id', controller.delete);
 
+contactRouter.get('/:id', controller.details);
+
 contactRouter.post(
   '/add_new_number_to_contact/:contact_id',
   controller.addNewNumber,
